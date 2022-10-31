@@ -1,0 +1,12 @@
+.custom-shape-divider-bottom-1667172361 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+}
+
+.parent{
+    position: relative;
+}
