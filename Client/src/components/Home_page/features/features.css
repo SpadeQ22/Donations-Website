@@ -1,0 +1,41 @@
+.feature_cell{
+    width: 33%;
+    text-align: center;
+    border-collapse: separate;
+    border-spacing: 30px 30px;
+    padding-top: 0px;
+    padding-right: 40px;
+    padding-left: 40px;
+}
+
+
+.feature_no{
+    font-weight: bolder;
+    font-size: 20px;
+    text-align: center;
+    padding-bottom: 20px;
+    padding-top: 6px;
+}
+
+
+.feat_number {
+    text-align: center;
+    display: inline-block;
+    border-style: solid;
+    border-color: #d8e6ef;
+    font-size: 45px;
+    cursor: pointer;
+    margin: 20px;
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    text-align: center;
+    text-decoration: none;
+    border-color: #d8e6ef;
+}
+
+
+.feat_number:hover {
+    background: #d8e6ef;
+    border-color: white;
+}

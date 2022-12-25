@@ -1,0 +1,281 @@
+#avatar {
+  width: 100px;
+  height: 100px;
+}
+
+#form_table {
+  width: 100%;
+  background-color: #fcbad3;
+  text-align: left;
+  border-collapse: separate;
+  border-spacing: 120px 0px;
+  padding-top: 0px;
+  margin-top: 0%;
+  margin-bottom: 0px;
+  padding-bottom: 5%;
+  padding-top: 2%;
+}
+
+#contact_cell {
+  display: flex;
+  align-items: left;
+  justify-content: left;
+}
+
+#companyInfo_cell {
+  padding-left: 20px;
+  margin-left: 0px;
+}
+#avatar_img {
+  flex-basis: 20%;
+}
+
+#header_row {
+  font-family: "Merriweather";
+  font-size: 2rem;
+}
+
+#header_row td {
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+#companyInfo_cell {
+  font-size: 16px;
+}
+
+#form_cell,
+#form-main {
+  padding-left: 0px;
+}
+
+#send_mail {
+  text-align: center;
+}
+
+.feedback-input {
+  color: #3c3c3c;
+  font-family: Helvetica, Arial, sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  border-radius: 0;
+  line-height: 22px;
+  background-color: #fbfbfb;
+  padding: 13px 13px 13px 54px;
+  margin-bottom: 4px;
+  width: 100%;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  border: 3px solid rgba(0, 0, 0, 0);
+}
+
+.feedback-input:focus {
+  background: #fff;
+  box-shadow: 0;
+  border: 3px solid #3498db;
+  color: #3498db;
+  outline: none;
+  padding: 13px 13px 13px 54px;
+}
+
+.focused {
+  color: #30aed6;
+  border: #30aed6 solid 3px;
+}
+
+textarea {
+  width: 100%;
+  height: 100px;
+  line-height: 150%;
+  resize: vertical;
+}
+
+textarea:hover,
+textarea:focus {
+  background-color: white;
+}
+
+#button-blue {
+  background-color: #AA96DA;
+  cursor: pointer;
+  color: white;
+  font-family: "Merriweather";
+  font-size: 1.25rem;
+  padding: 3% 15%;
+  text-align: center;
+  border-color: #AA96DA;
+  border-radius: 15px;
+}
+
+#button-blue:hover {
+  color: #FCBAD3;
+}
+
+.submit {
+  text-align: center;
+}
+
+.screen_reader {
+  width: var(--screen_reader-width, 1px);
+  height: var(--screen_reader-height, 1px);
+  padding: var(--screen_reader-padding, 0);
+  border: var(--screen_reader-border, none);
+
+  position: var(--screen_reader-position, absolute);
+  clip: var(--screen_reader-clip, rect(1px, 1px, 1px, 1px));
+  overflow: var(--screen_reader-overflow, hidden);
+
+  font-size: 20px;
+}
+
+.input_field {
+  font-size: 20px;
+  --uiFieldPlaceholderColor: var(--fieldPlaceholderColor, #767676);
+
+  background-color: transparent;
+  border-radius: 0;
+  border: none;
+
+  font-family: inherit;
+}
+
+.input_field:focus::-webkit-input-placeholder {
+  color: var(--uiFieldPlaceholderColor);
+}
+
+.input_field:focus::-moz-placeholder {
+  color: var(--uiFieldPlaceholderColor);
+}
+
+.field {
+  --uiFieldBorderWidth: var(--fieldBorderWidth, 2px);
+  --uiFieldPaddingRight: var(--fieldPaddingRight, 1rem);
+  --uiFieldPaddingLeft: var(--fieldPaddingLeft, 1rem);
+  --uiFieldBorderColorActive: var(
+    --fieldBorderColorActive,
+    rgba(22, 22, 22, 1)
+  );
+
+  display: var(--fieldDisplay, inline-flex);
+  position: relative;
+  font-size: var(--fieldFontSize, 1rem);
+}
+
+.input_field {
+  box-sizing: border-box;
+  width: var(--fieldWidth, 100%);
+  height: var(--fieldHeight, 3rem);
+  padding: var(--fieldPaddingTop, 1.25rem) var(--uiFieldPaddingRight)
+    var(--fieldPaddingBottom, 0.5rem) var(--uiFieldPaddingLeft);
+  border-bottom: var(--uiFieldBorderWidth) solid
+    var(--fieldBorderColor, rgba(0, 0, 0, 0.25));
+  height: 60px;
+}
+
+.input_field:focus {
+  outline: none;
+}
+
+.input_field::-webkit-input-placeholder {
+  opacity: 0;
+  transition: opacity 0.2s ease-out;
+}
+
+.input_field::-moz-placeholder {
+  opacity: 0;
+  transition: opacity 0.2s ease-out;
+}
+
+.input_field:focus::-webkit-input-placeholder {
+  opacity: 1;
+  transition-delay: 0.2s;
+}
+
+.input_field:focus::-moz-placeholder {
+  opacity: 1;
+  transition-delay: 0.2s;
+}
+
+.field_labelWrap {
+  font-size: 18px;
+  box-sizing: border-box;
+  pointer-events: none;
+  cursor: text;
+
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.field_labelWrap::after {
+  content: "";
+  box-sizing: border-box;
+  width: 100%;
+  height: 0;
+  opacity: 0;
+
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+.input_field:focus ~ .field_labelWrap::after {
+  opacity: 1;
+}
+
+.field__label {
+  position: absolute;
+  left: var(--uiFieldPaddingLeft);
+  top: calc(50% - 0.5em);
+
+  line-height: 1;
+  font-size: var(--fieldHintFontSize, inherit);
+
+  transition: top 0.2s cubic-bezier(0.9, -0.15, 0.1, 1.15),
+    opacity 0.2s ease-out, font-size 0.2s ease-out;
+}
+
+.input_field:focus ~ .field_labelWrap .field__label,
+.input_field:not(:placeholder-shown) ~ .field_labelWrap .field__label {
+  --fieldHintFontSize: var(--fieldHintFontSizeFocused, 0.95rem);
+
+  top: var(--fieldHintTopHover, 0.1rem);
+}
+
+.name_field .field_labelWrap::after {
+  border-bottom: var(--uiFieldBorderWidth) solid var(--uiFieldBorderColorActive);
+  transition: opacity 0.2s ease-out;
+}
+
+.email_field .field_labelWrap {
+  overflow: hidden;
+}
+
+.email_field .field_labelWrap::after {
+  border-bottom: var(--uiFieldBorderWidth) solid var(--uiFieldBorderColorActive);
+  transform: translate3d(-105%, 0, 0);
+  transition: transform 0.285s ease-out 0.2s, opacity 0.2s ease-out 0.2s;
+}
+
+.email_field .input_field:focus ~ .field_labelWrap::after {
+  transform: translate3d(0, 0, 0);
+  transition-delay: 0;
+}
+
+.field {
+  --fieldBorderColor: #ffffd2;
+}
+
+.page {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 480px;
+  margin: auto;
+  padding: 1rem;
+  display: grid;
+  grid-gap: 30px;
+}

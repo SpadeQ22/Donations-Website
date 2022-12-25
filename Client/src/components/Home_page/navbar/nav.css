@@ -1,0 +1,30 @@
+.navbar-brand{
+    font-family: 'Pacifico', cursive;
+    font-size: 2em;
+    padding: 0% 2% 0% 0%;
+    color: white;
+}
+
+.navbar{
+    padding: 1% 4%;
+}
+
+.navbar-brand:hover{
+    color:#FCBAD3;
+}
+
+.navbar-nav .nav-item .nav-link{
+    color: white;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1em;
+    /* padding: 0% 2%; */
+}
+
+.navbar-nav .nav-item .nav-link:hover{
+    color: #FCBAD3;
+}
+
+.navbar-toggler{
+    color: white;
+}
+

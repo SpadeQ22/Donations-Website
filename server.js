@@ -1,12 +1,37 @@
 require("dotenv").config();
 const express = require("express");
-const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
-// const passport = require('passport');
+const cors = require("cors");
+const passport = require("passport")
+const { default: mongoose } = require("mongoose");
+const routes = require("./routes");
+
+mongoose.set('strictQuery', true);
+mongoose.Promise = global.Promise; 
+try {
+    mongoose.connect("mongodb://localhost:27017/donationWebApi")
+} catch (err) {
+    mongoose.createConnection("mongodb://localhost:27017/donationWebApi");
+}
+mongoose.connection.once('open', () => console.log('MongoDB Running')).on('error', e => {
+    throw e;
+})
+
+
+
 const app = express()
 app.use(bodyParser.json());
-const port = process.env.PORT || 3000;
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
 
+app.use(cors());
+app.use(passport.initialize());
+
+
+app.use("/", routes)
+
+const port = process.env.PORT || 3000;
 app.listen(port, (err)=>{
     if(err){
         console.log(err.stack);

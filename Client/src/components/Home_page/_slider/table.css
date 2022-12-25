@@ -1,0 +1,30 @@
+#news_table{
+    text-align: left; 
+    border-collapse: separate;
+    border-spacing: 40px 60px;
+    width: 50%; 
+    height:"70px";
+    margin-left: 50%;
+}
+
+
+
+
+.box_no{
+    font-weight: 900;
+    font-size: 90px;
+    color: #c5dfef;
+    vertical-align: top;
+    padding-top: 20px;
+    padding-bottom: 60px;
+}
+
+.box{
+    background-color: rgb(255, 255, 255);
+    width: 5%;
+    padding: 0px 60px 80px 45px;
+    margin-left: 50%;
+}
+
+
+

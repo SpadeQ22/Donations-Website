@@ -1,0 +1,85 @@
+
+
+#title {
+  font-size: 20px;
+  font-weight: 800;
+  padding: 20px 0px;
+  text-align: center;
+}
+
+#contact_info {
+  width: 100%;
+  text-align: center;
+}
+
+
+#d {
+  text-align: center;
+}
+
+#social_list {
+  position: relative;
+  top: 0%;
+  left: 0%;
+  margin: 0;
+  padding: 0;
+  display: inline-flex;
+}
+
+#social_list li {
+  list-style: none;
+  display: inline;
+}
+
+#social_list li a {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  display: block;
+  text-align: center;
+  margin: 0 10px;
+  border-radius: 50%;
+  padding: 6px;
+  box-sizing: border-box;
+  text-decoration: none;
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
+  background: linear-gradient(0deg, #ddd, #fff);
+  transition: 0.5s;
+}
+
+#social_list li a:hover {
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  text-decoration: none;
+}
+
+#social_list li a .fa {
+  width: 100%;
+  height: 100%;
+  display: block;
+  background: linear-gradient(0deg, #fff, #ddd);
+  border-radius: 50%;
+  line-height: calc(60px - 12px);
+  font-size: 24px;
+  color: #262626;
+  transition: 0.5s;
+}
+
+#social_list li:nth-child(1) a:hover .fa {
+  color: #3b5998;
+}
+
+#social_list li:nth-child(2) a:hover .fa {
+  color: #00aced;
+}
+
+#social_list li:nth-child(3) a:hover .fa {
+  color: #dd4b39;
+}
+
+#social_list li:nth-child(4) a:hover .fa {
+  color: #007bb6;
+}
+
+#social_list li:nth-child(5) a:hover .fa {
+  color: #e4405f;
+}

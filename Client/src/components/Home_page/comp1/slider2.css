@@ -1,0 +1,48 @@
+#help_td{
+    padding: 60px 200px 100px 150px;
+}
+
+.div1h1{
+	font-family: 'Roboto', 'serif';
+	font-weight: 500;
+	color: white;
+}
+
+.fa {
+	padding-left: 1%;
+	color: #FCBAD3;
+}
+
+#donation_text{
+	font-family: 'Merriweather', 'san-serif';
+	font-size: 1.25em;
+	color: white;
+	width: 70%;
+}
+ #donate_btn {
+	background-color:#FCBAD3;
+	cursor:pointer;
+	color:white;
+	font-family:'Merriweather';
+	font-size:1.25rem;
+	padding:1.75% 6%;
+    text-align: center;
+	border-color: #FCBAD3;
+	border-radius: 15px;
+}
+
+#donate_btn:hover {
+	color: #AA96DA;
+
+}
+
+#donate_btn:active {
+	position:relative;
+	top:1px;
+}
+
+#slider2img{
+	width: 70%;
+	height: auto;
+	margin-bottom: 15%;
+}
