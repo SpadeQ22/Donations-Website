@@ -25,7 +25,10 @@ function Slider2() {
               happens next?
             </div>
             <br /> <br />
-            <button type="button" class="btn btn-primary" id="donate_btn">Donate Now</button>
+            <a href = "/donate">
+            <button type="button" class="btn btn-primary" id="donate_btn" >Donate Now</button>
+
+            </a>
           </td>
 
           <td>

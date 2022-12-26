@@ -28,7 +28,10 @@ function Donate() {
               happens next?
             </div>
             <br />
+            <a href="/donate">
             <button type="button" class="btn" id="donate_btn2">Donate Now</button>
+
+            </a>
           </td>
         </tr>
       </table>

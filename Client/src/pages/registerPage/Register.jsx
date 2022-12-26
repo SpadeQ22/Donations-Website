@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./register.css";
 import FormInput from "../../components/Form/FormInput";
+import Nav from "../../components/Home_page/navbar/nav"
 
 const Register = () => {
   const [values, setValues] = useState({
@@ -71,7 +72,9 @@ const Register = () => {
   };
 
   return (
-    <div className="register">
+    <div>
+      <Nav />
+      <div className="register">
       <form className="registerForm" onSubmit={handleSubmit}>
         <h1 className="registerHeader">Sign Up</h1>
         {inputs.map((input) => (
@@ -85,6 +88,8 @@ const Register = () => {
         <button className="registerBtn">Submit</button>
       </form>
     </div>
+    </div>
+    
   );
 };
 

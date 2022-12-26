@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./login.css";
 import FormInput from "../../components/Form/FormInput";
+import Nav from '../../components/Home_page/navbar/nav';
 
 const Login = () => {
   const [values, setValues] = useState({
@@ -40,7 +41,10 @@ const Login = () => {
   };
 
   return (
-    <div className="login">
+    <div>
+      <Nav />
+      <div className="login">
+      
       <form className="logInForm" onSubmit={handleSubmit}>
         <h1 className="LogInHeader">Log In</h1>
         {inputs.map((input) => (
@@ -54,6 +58,8 @@ const Login = () => {
         <button className="loginBtn">Submit</button>
       </form>
     </div>
+    </div>
+    
   );
 };
 

@@ -1,0 +1,26 @@
+.carddiv{
+    background-color: white;
+    height: 30%;
+    width:40%
+}
+
+.paymentForm{
+    margin: auto;
+}
+
+.mainSection{
+    margin: auto;
+}
+
+.payment-logos{
+    margin: 1% auto;
+    /* background-color: black; */
+    text-align: center;
+    width: 100%;
+}
+
+.logo{
+    display: inline-block;
+    margin: 1% 2%;
+
+}
