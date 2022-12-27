@@ -12,6 +12,7 @@ async function signUp(req, res) {
 }
 
 function login(req, res, next) {
+    console.log(req);
     res.status(200).json(req.user.toAuthJSON());
     return next();
 }

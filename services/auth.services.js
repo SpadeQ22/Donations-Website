@@ -51,6 +51,7 @@ const jwtStrategy = new Strategy(jwtOpts, async (payload, done) => {
 
 const localStrategyUser = new LocalStrategy(localOpts, async (email, password, done) => {
      try {
+        console.log(email);
          const user = await User.findOne({
              email
          });

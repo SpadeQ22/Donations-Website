@@ -2,20 +2,40 @@ import { useState } from "react";
 import "./register.css";
 import FormInput from "../../components/Form/FormInput";
 import Nav from "../../components/Home_page/navbar/nav"
+import * as Auth from '../../middleware/auth.service'
+import { useNavigate } from "react-router-dom";
 
 const Register = () => {
+  const navigate = useNavigate();
   const [values, setValues] = useState({
-    username: "",
+    firstName:"",
+    lastName:"",
+    userName: "",
     email: "",
-    birthday: "",
     password: "",
     confirmPassword: "",
   });
 
   const inputs = [
     {
+      id: 7,
+      name: "lastName",
+      type: "text",
+      placeholder: "Last Name",
+      label: "Last Name",
+      required: true,
+    },
+    {
+      id: 6,
+      name: "firstName",
+      type: "text",
+      placeholder: "First Name",
+      label: "First Name",
+      required: true,
+    },
+    {
       id: 1,
-      name: "username",
+      name: "userName",
       type: "text",
       placeholder: "Username",
       errorMessage:
@@ -32,13 +52,6 @@ const Register = () => {
       errorMessage: "It should be a valid email address!",
       label: "Email",
       required: true,
-    },
-    {
-      id: 3,
-      name: "birthday",
-      type: "date",
-      placeholder: "Birthday",
-      label: "Birthday",
     },
     {
       id: 4,
@@ -63,8 +76,16 @@ const Register = () => {
     },
   ];
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
+    delete values.confirmPassword;
+    const response = await Auth.registerAuthUser(values);
+    if(response.auth){
+      navigate("/");
+    } else {
+      window.alert("Missing Info/Weak Data");
+    }
+
   };
 
   const onChange = (e) => {

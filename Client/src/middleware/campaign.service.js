@@ -1,9 +1,9 @@
-const axios = require('axios');
+import axios from 'axios';
 
-const getAllCampaigns = async()=>{
+export const getAllCampaigns = async()=>{
     let config = {
-        method: 'get',
-        url: 'http://localhost:3000/campaigns',
+        method: 'POST',
+        url: 'http://localhost:3001/campaigns',
         headers: { }
     };
     try{
@@ -20,4 +20,3 @@ const getAllCampaigns = async()=>{
     }
 }
 
-module.exports = {getAllCampaigns}

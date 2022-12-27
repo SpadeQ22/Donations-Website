@@ -6,7 +6,7 @@ const passport = require("passport")
 const { default: mongoose } = require("mongoose");
 const routes = require("./routes");
 
-mongoose.set('strictQuery', true);
+mongoose.set('strictQuery', false);
 mongoose.Promise = global.Promise; 
 try {
     mongoose.connect("mongodb://localhost:27017/donationWebApi")
@@ -31,7 +31,7 @@ app.use(passport.initialize());
 
 app.use("/", routes)
 
-const port = process.env.PORT || 3000;
+const port = 3001;
 app.listen(port, (err)=>{
     if(err){
         console.log(err.stack);

@@ -1,7 +1,19 @@
 import "./slider.css";
 import Table from "./table";
+import * as campaignController from "../../../middleware/campaign.service"
+import { useEffect, useState } from "react";
 
 function Slider() {
+  const [campaigns, setCampaigns] = useState([]);
+
+  useEffect(()=>{
+      campaignController.getAllCampaigns().then((res)=>{
+        console.log(res);
+        setCampaigns(res.data);
+      });
+  }, [])
+
+
   return (
     <div class="slider">
       <div id="c1">
@@ -33,15 +45,11 @@ function Slider() {
           <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
         </ol>
         <div class="carousel-inner">
-          <div class="carousel-item active">
-            <Table />
-          </div>
-          <div class="carousel-item">
-            <Table />
-          </div>
-          <div class="carousel-item">
-            <Table />
-          </div>
+          {campaigns.map((Campaign, index)=>{
+            return(<div class= {(index+1) === 1?  "carousel-item active": "carousel-item"}>
+              <Table title={Campaign.campaignTitle} description={Campaign.campaignDescription} number={index+1}/>
+            </div>);
+          })}
         </div>
         <a
           class="carousel-control-prev"

@@ -1,12 +1,12 @@
-const Manager = require('./config.service');
-const axios = require('axios');
-const qs = require('qs');
+import axios from 'axios';
+import qs from 'qs';
+import  * as Manager from './config.service'
 
 
-const getAllUsers = async() => {
+export const getAllUsers = async() => {
     let config = {
-        method: 'get',
-        url: 'http://localhost:3000/admin/users',
+        method: 'POST',
+        url: 'http://localhost:3001/admin/users',
         headers: { 
             'Authorization': Manager.getToken()
         }
@@ -25,10 +25,10 @@ const getAllUsers = async() => {
     }   
 }
 
-const getUserData = async(userId) => {
+export const getUserData = async(userId) => {
     let config = {
-        method: 'get',
-        url: 'http://localhost:3000/admin/users/'+userId,
+        method: 'POST',
+        url: 'http://localhost:3001/admin/users/'+userId,
         headers: { 
             'Authorization': Manager.getToken()
         }
@@ -47,11 +47,11 @@ const getUserData = async(userId) => {
     }   
 }
 
-const editUserData = async(new_data, userId) => {
+export const editUserData = async(new_data, userId) => {
     let data = qs.stringify(new_data);
     let config = {
         method: 'put',
-        url: 'http://localhost:3000/admin/users/'+userId,
+        url: 'http://localhost:3001/admin/users/'+userId,
         headers: { 
             'Authorization': Manager.getToken(),
             'Content-Type': 'application/x-www-form-urlencoded'
@@ -70,11 +70,4 @@ const editUserData = async(new_data, userId) => {
             'errMsg': e,
         });
     }   
-}
-
-
-module.exports = {
-    getAllUsers,
-    getUserData,
-    editUserData
 }

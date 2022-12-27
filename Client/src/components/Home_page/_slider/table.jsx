@@ -1,24 +1,19 @@
 import './table.css';
+import * as campaigns from '../../../middleware/campaign.service'
+import {useState } from 'react';
 
 
 
-function Table() {
+function Table(props) {
     return (
         <div>
-        <table id="news_table">
+            <table id="news_table">
             <tr>
                 <td id="c2" class="box">
-					<div class="box_no">1</div>
-					<b>First Box</b> <br/><br/> <p>Multiple interlocking crises have characterized this year, including global hunger, distupted education and the climate crisis.<br/><br/>  In Somalia, a mother holds her baby who is being treated for malnutrition. <br/><br/> </p>
+					<div class="box_no">{props.number}</div>
+					<b>{props.title}</b> <br/><br/> <p>{props.description} <br/><br/> </p>
 
 					<br/> <br/> <a href="https://help.unicef.org/">Read more</a>	
-				</td>
-
-				<td id="c3" class="box">
-					<div class="box_no">2</div>
-					<b>Second Box</b> <br/><br/> <p>Multiple interlocking crises have characterized this year, including global hunger, distupted education and the climate crisis.<br/><br/>  In Somalia, a mother holds her baby who is being treated for malnutrition. <br/><br/> </p>
-
-					<br/> <br/> <a href="https://help.unicef.org/">Read more</a>
 				</td>
               
             </tr>

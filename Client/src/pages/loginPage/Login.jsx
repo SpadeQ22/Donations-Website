@@ -1,14 +1,26 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom"
 import "./login.css";
 import FormInput from "../../components/Form/FormInput";
 import Nav from '../../components/Home_page/navbar/nav';
+import {loginAuthUser} from '../../middleware/auth.service';
 
 const Login = () => {
   const [values, setValues] = useState({
     email: "",
     password: "",
   });
+  const navigate = useNavigate();
+  const loginAuth = async(e)=>{
+    e.preventDefault()
+    const response = await loginAuthUser(values.email, values.password);
+    if(response.auth){
+      navigate("/");
+    } else {
+      window.alert("Wrong Credentials");
+    }
 
+  }
   const inputs = [
     {
       id: 1,
@@ -45,7 +57,7 @@ const Login = () => {
       <Nav />
       <div className="login">
       
-      <form className="logInForm" onSubmit={handleSubmit}>
+      <form className="logInForm" onSubmit={loginAuth}>
         <h1 className="LogInHeader">Log In</h1>
         {inputs.map((input) => (
           <FormInput

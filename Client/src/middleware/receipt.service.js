@@ -1,17 +1,17 @@
-const Manager = require('./config.service');
-const axios = require('axios');
-const qs = require('qs');
+import axios from 'axios';
+import qs from 'qs';
+import  * as Manager from './config.service'
 
 
-const addReceipt = async(amount, campaignId) => {
+export const addReceipt = async(amount, campaignId) => {
     let data = qs.stringify({
         'amount': amount,
         'campaignId': campaignId,
         'userId': Manager.getId() 
     });
     let config = {
-        method: 'post',
-        url: 'http://localhost:3000/payment/receipt',
+        method: 'POST',
+        url: 'http://localhost:3001/payment/receipt',
         headers: { 
           'Authorization': Manager.getToken(),
           'Content-Type': 'application/x-www-form-urlencoded'
@@ -32,10 +32,10 @@ const addReceipt = async(amount, campaignId) => {
     }
 }
 
-const getAllReceipts = async() => {
+export const getAllReceipts = async() => {
     let config = {
-        method: 'get',
-        url: 'http://localhost:3000/admin/receipts',
+        method: 'POST',
+        url: 'http://localhost:3001/admin/receipts',
         headers: { 
           'Authorization': Manager.getToken(),
         }
@@ -55,10 +55,10 @@ const getAllReceipts = async() => {
     }
 }
 
-const getReceiptData = async(receipt_id) => {
+export const getReceiptData = async(receipt_id) => {
     let config = {
-        method: 'get',
-        url: 'http://localhost:3000/receipts/'+receipt_id,
+        method: 'POST',
+        url: 'http://localhost:3001/receipts/'+receipt_id,
         headers: { 
           'Authorization': Manager.getToken(),
         }
@@ -78,8 +78,3 @@ const getReceiptData = async(receipt_id) => {
     }
 }
 
-module.exports={
-    getAllReceipts,
-    getReceiptData,
-    addReceipt
-}

@@ -3,35 +3,26 @@ let _id = null;
 let userName = null;
 
 
-const setToken = (new_token) => {
+export const setToken = (new_token) => {
     token = new_token;
 }
 
-const getToken = () =>{
+export const getToken = () =>{
     return token;
 }
 
-const setId = (new_id) =>{
+export const setId = (new_id) =>{
     _id = new_id;
 }
 
-const getId = () =>{
+export const getId = () =>{
     return _id;
 }
 
-const setUserName = (new_userName) => {
+export const setUserName = (new_userName) => {
     userName = new_userName;
 }
 
-const getUserName = ()=>{
+export const getUserName = ()=>{
     return userName;
-}
-
-module.exports = {
-    setToken, 
-    setId, 
-    getToken,
-    getId, 
-    setUserName, 
-    getUserName
 }
