@@ -1,0 +1,20 @@
+.edit:hover{
+    cursor: pointer;
+}
+
+#receipt-table th,#receipt-table td, 
+
+#users-table th,#users-table td{
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+}
+
+#receipt-table td,  #users-table td{
+    font-size: 20px;
+}
+
+
+
+#receipt-table th,  #users-table th{
+    font-size: 22px;
+}

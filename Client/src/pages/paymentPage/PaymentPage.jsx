@@ -7,7 +7,6 @@ function PaymentPage(){
         <div>
             <Nav />
             <PaymentForm />
-
         </div>
     )
 }
