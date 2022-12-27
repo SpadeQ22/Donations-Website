@@ -5,7 +5,7 @@ async function signUp(req, res) {
         console.log(req.body);
         const newUser = await User.create(req.body);
         console.log(newUser);
-        res.status(201).json(newUser);
+        res.status(201).json(newUser.toAuthJSON());
     } catch (e) {
         res.status(500).json(e);
     }
@@ -18,7 +18,7 @@ function login(req, res, next) {
 
 async function editUser(req, res){
     try{
-        const updatedUser = await User.findOneAndUpdate({_id: req.params.id}, req.body);
+        const updatedUser = await User.findOneAndUpdate({_id: req.params.id}, req.body, {new :true});
         res.status(200).json(updatedUser);
     } catch(e){
         res.status(500).json(e);

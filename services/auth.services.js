@@ -20,9 +20,9 @@ const jwtStrategy = new Strategy(jwtOpts, async (payload, done) => {
     try{
         let authenticatedUser = null;
         if(payload.admin){
-            authenticatedUser = await User.findById(payload._id);
-        } else {
             authenticatedUser = await Admin.findById(payload._id);
+        } else {
+            authenticatedUser = await User.findById(payload._id);
         }
         
         if(!authenticatedUser){
