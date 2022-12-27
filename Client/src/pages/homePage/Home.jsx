@@ -7,7 +7,6 @@ import Map from '../../components/Home_page/Map/map';
 import Form from '../../components/Home_page/form/form';
 import Last from '../../components/Home_page/Last/last';
 
-//test
 
 function Home() {
     return (
