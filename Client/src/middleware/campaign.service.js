@@ -4,7 +4,6 @@ export const getAllCampaigns = async()=>{
     let config = {
         method: 'POST',
         url: 'http://localhost:3001/campaigns',
-        headers: { }
     };
     try{
         const response = await axios(config);

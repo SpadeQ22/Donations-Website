@@ -1,7 +1,13 @@
 import './form.css';
 import logo from './Avatar.png'
+import {useState} from 'react'
 
 function Form() {
+
+    const [body, setBody] = useState("");
+    const [subject, setSubject] = useState("");
+    const [from, setFrom] = useState("");
+
     return (
         <div>
 
@@ -39,7 +45,7 @@ function Form() {
 
                                     <div class="field name_field">
                                         <label class="screen_reader">Name</label>
-                                        <input id="name" class="input_field" placeholder="e.g. Zakaria Sobhy" />
+                                        <input id="name" class="input_field" placeholder="e.g. Zakaria Sobhy" onChange={setSubject}/>
                                         <span class="field_labelWrap" aria-hidden="true">
                                             <span class="field__label">Name</span>
                                         </span>
@@ -47,7 +53,7 @@ function Form() {
 
                                     <div class="field email_field">
                                         <label for="email" class="screen_reader">Email</label>
-                                        <input id="email" class="input_field" placeholder="e.g. MahmoudElKhashab@gmail.com" />
+                                        <input id="email" class="input_field" placeholder="e.g. MahmoudElKhashab@gmail.com" onChange={setFrom}/>
                                         <span class="field_labelWrap" aria-hidden="true">
                                             <span class="field__label">Email</span>
                                         </span>
@@ -55,13 +61,15 @@ function Form() {
 
                                     <div class="text">
                                         <textarea name="text" class="feedback-input"
-                                            id="comment" placeholder="Comment"></textarea>
+                                            id="comment" placeholder="Comment" onChange={setBody}></textarea>
                                     </div>
-
+                                    <a href="mailto:test@gmail.com">
                                     <div class="submit">
-                                        <input type="submit" class="btn" value="Send" id="button-blue" />
+
+                                        <input class="btn" value="Send" id="button-blue" />
                                         <div class="ease"></div>
                                     </div>
+                                    </a>
                                 </div>
 
                             </form>

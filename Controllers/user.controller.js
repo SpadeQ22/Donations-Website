@@ -7,6 +7,7 @@ async function signUp(req, res) {
         console.log(newUser);
         res.status(201).json(newUser.toAuthJSON());
     } catch (e) {
+        console.log(e);
         res.status(500).json(e);
     }
 }

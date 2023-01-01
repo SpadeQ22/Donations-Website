@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom"
 import "./login.css";
 import FormInput from "../../components/Form/FormInput";
 import Nav from '../../components/Home_page/navbar/nav';
-import {loginAuthUser} from '../../middleware/auth.service';
+import {loginAuthAdmin} from '../../middleware/auth.service';
 import { useCookies } from 'react-cookie';
 
 const Login = () => {
@@ -15,9 +15,9 @@ const Login = () => {
   const navigate = useNavigate();
   const loginAuth = async(e)=>{
     e.preventDefault()
-    const response = await loginAuthUser(values.email, values.password, setCookie);
+    const response = await loginAuthAdmin(values.email, values.password, setCookie);
     if(response.auth){
-      navigate("/");
+      navigate("/admin-dash");
     } else {
       window.alert("Wrong Credentials");
     }
@@ -45,7 +45,7 @@ const Login = () => {
       required: true,
     },
   ];
-  
+
   const handleSubmit = (e) => {
     e.preventDefault();
   };
@@ -60,7 +60,7 @@ const Login = () => {
       <div className="login">
       
       <form className="logInForm" onSubmit={loginAuth}>
-        <h1 className="LogInHeader">Log In</h1>
+        <h1 className="LogInHeader">Admin Log In</h1>
         {inputs.map((input) => (
           <FormInput
             key={input.id}

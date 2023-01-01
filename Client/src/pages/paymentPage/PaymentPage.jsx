@@ -1,4 +1,4 @@
-import PaymentForm from '../../components/paymentForm/paymentForm'
+import PaymentForm from '../../components/paymentForm/PaymentForm'
 import Nav from '../../components/Home_page/navbar/nav'
 
 

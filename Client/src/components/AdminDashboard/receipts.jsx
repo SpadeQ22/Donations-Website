@@ -1,20 +1,68 @@
 import Nav from '../Home_page/navbar/nav';
 import './users.css';
 
-import React, { Component } from 'react';
+import React from 'react';
+import * as receiptController from '../../middleware/receipt.service';
+
+import {useState, useEffect} from 'react';
+import { useCookies } from 'react-cookie';
 
 
 function Receipts() {
+        const [cookies, setCookie] = useCookies(['user']);
+        const [receipts, setReceipts] = useState([]);
+        const [receipt, setReceipt] = useState(
+            {
+                "_id": "63a61bd736b59ddddd2700cc",
+                "amount": 200,
+                "userId": {
+                    "_id": "63a10209cbfeb81a426f9842",
+                    "email": "osn1111@gmail.cm",
+                    "firstName": "Omar",
+                    "lastName": "Ashraf",
+                    "userName": "omarco2211",
+                    "password": "$2b$10$qsb.kPaSx2YQKNguQqOInOCZtu7n5HF7qub6S3EFQa3XqOlswlGE2",
+                    "__v": 0
+                },
+                "campaignId": {
+                    "_id": "63a60eb9c397956750bbe9e0",
+                    "totalDonations": 5300,
+                    "campaignTitle": "Hunger",
+                    "campaignDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+                    "targetFund": 100000,
+                    "__v": 0
+                },
+                "createdAt": "2022-12-23T21:21:27.128Z",
+                "updatedAt": "2022-12-23T21:21:27.128Z",
+                "__v": 0
+            }
+        );
 
-        var box =
-        [['First Name','first_name'], ['Last Name','last_name'], ['Email','email']];
+        useEffect(()=>{
+            receiptController.getAllReceipts(cookies.user.token).then(response => {
+                setReceipts(response.data);
+            });
+        }, [])
+
+        let box =
+        [['Receipt ID:','_id', receipt._id], 
+        ['Campaign ID:','CampaignId', receipt.campaignId._id], 
+        ['Campaign Title:','campaignTitle', receipt.campaignId.campaignTitle], 
+        ['Client Name:', 'clientName', receipt.userId.firstName + ' ' + receipt.userId.lastName], 
+        ['Amount:', 'amount', receipt.amount], 
+        ['Timestamp:', 'timeStamp', receipt.createdAt]];
       
 
-        var body =
-            [['1', '100', '6', '12'],
-            ['2', '2010230', '6', '12'],
-            ['3', '1233', '6', '12'],
-            ['4', '92445', '6', '12']];
+        const setData = async (index)=>{
+            receiptController.getReceiptData(receipts[index]._id, cookies.user.token).then(response =>{
+                if(response.status === "success"){
+                    console.log(response.data);
+                    setReceipt(response.data[0]);
+                } else {
+                    window.alert("Error: " + response.errMsg);
+                }
+            });
+        }
     
         return (
             <div>
@@ -31,12 +79,12 @@ function Receipts() {
                         </tr>
                     </thead>
                     <tbody>
-                        {body.map((row,index) => <tr>
-                            <td>{row[0]}</td>
-                            <td>{row[1]}</td>
-                            <td>{row[2]}</td>
-                            <td>{row[3]}</td>
-                            <td><a id={`edit_${row[0]}`} class='edit' data-target="#modal" data-toggle="modal">View Details</a></td>
+                        {receipts.map((row,index) => <tr>
+                            <td>{row.userId}</td>
+                            <td>{row.amount}</td>
+                            <td>{row.campaignId}</td>
+                            <td>{row.createdAt}</td>
+                            <td><a id={`edit_${index}`} name={index} class='edit' data-target="#modal" data-toggle="modal" onClick={()=>setData(index)}>View Details</a></td>
 
                         </tr>)}
     
@@ -58,6 +106,7 @@ function Receipts() {
                             {box.map((ele,i) =>  
                                     <div id={`form-${ele[1]}`} class="form-group">
                                         <label class="col-form-label">{ele[0]}</label>
+                                        <input id={`input_${ele[1]}`} class="form-control" type="text" value={ele[2]} readOnly/>
                                     </div>)}
                             </form>
                                 

@@ -1,14 +1,13 @@
 import axios from 'axios';
 import qs from 'qs';
-import  * as Manager from './config.service'
 
 
-export const getAllUsers = async() => {
+export const getAllUsers = async(Auth) => {
     let config = {
         method: 'POST',
         url: 'http://localhost:3001/admin/users',
         headers: { 
-            'Authorization': Manager.getToken()
+            'Authorization': Auth
         }
     };
     try{
@@ -25,12 +24,12 @@ export const getAllUsers = async() => {
     }   
 }
 
-export const getUserData = async(userId) => {
+export const getUserData = async(userId, Auth) => {
     let config = {
         method: 'POST',
         url: 'http://localhost:3001/admin/users/'+userId,
         headers: { 
-            'Authorization': Manager.getToken()
+            'Authorization': Auth
         }
     };
     try{
@@ -47,13 +46,13 @@ export const getUserData = async(userId) => {
     }   
 }
 
-export const editUserData = async(new_data, userId) => {
+export const editUserData = async(new_data, userId, Auth) => {
     let data = qs.stringify(new_data);
     let config = {
         method: 'put',
         url: 'http://localhost:3001/admin/users/'+userId,
         headers: { 
-            'Authorization': Manager.getToken(),
+            'Authorization': Auth,
             'Content-Type': 'application/x-www-form-urlencoded'
         },
         data: data

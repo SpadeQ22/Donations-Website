@@ -5,11 +5,14 @@ import PaymentPage from './pages/paymentPage/PaymentPage'
 import AdminDash from './pages/adminPage/AdminDash'
 import Users from './components/AdminDashboard/users'
 import Receipts from './components/AdminDashboard/receipts'
-
+import AdminLogin from './pages/adminLogin/AdminLogin'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { CookiesProvider } from 'react-cookie';
+
 
 function App() {
   return (
+    <CookiesProvider>
     <BrowserRouter>
         <Routes>
             <Route path="/" element={<Home />} />
@@ -19,8 +22,10 @@ function App() {
             <Route path="admin-dash" element={<AdminDash />} />
             <Route path="users" element={<Users />} />
             <Route path="receipts" element={<Receipts />} />
+            <Route path="admin-login" element={<AdminLogin />} />
         </Routes>
       </BrowserRouter>
+      </CookiesProvider>
   );
 }
 

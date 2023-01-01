@@ -1,11 +1,12 @@
 import axios from 'axios';
 import * as qs from 'qs';
-import  * as tokenManager  from './config.service'
 
 
 
 
-export const loginAuthUser = async(email, password)=>{
+
+
+export const loginAuthUser = async(email, password, setCookie)=>{
     let data = await qs.stringify({
         'email': email,
         'password': password
@@ -22,9 +23,7 @@ export const loginAuthUser = async(email, password)=>{
     };
     try{
         const response = await axios(config);
-        tokenManager.setToken(response.token);
-        tokenManager.setId(response.data._id);
-        tokenManager.setUserName(response.data.userName);
+        setCookie('user', response.data);
         return({
             "status": "success", 
             "auth": true, 
@@ -43,7 +42,7 @@ export const loginAuthUser = async(email, password)=>{
 }
 
 
-export const registerAuthUser = async(userInfo)=>{
+export const registerAuthUser = async(userInfo, setCookie)=>{
     let data = await qs.stringify(userInfo);
     let config = {
         method: 'POST',
@@ -55,9 +54,7 @@ export const registerAuthUser = async(userInfo)=>{
     };
     try{
         const response = await axios(config);
-        tokenManager.setToken(response.data.token);
-        tokenManager.setId(response.data._id);
-        tokenManager.setUserName(response.data.userName);
+        setCookie(response.data);
         return({
             "status": "success", 
             "auth": true, 
@@ -75,13 +72,13 @@ export const registerAuthUser = async(userInfo)=>{
 }
 
 
-export const loginAuthAdmin = async(email, password)=>{
+export const loginAuthAdmin = async(email, password, setCookie)=>{
     let data = await qs.stringify({
         'email': email,
         'password': password
     })
     let config = {
-        method: 'get',
+        method: 'POST',
         url: 'http://localhost:3001/login-admin/',
         headers: { 
           'Content-Type': 'application/x-www-form-urlencoded'
@@ -90,9 +87,7 @@ export const loginAuthAdmin = async(email, password)=>{
     };
     try{
         const response = await axios(config);
-        tokenManager.setToken(response.data.token);
-        tokenManager.setId(response.data._id);
-        tokenManager.setUserName(response.data.userName);
+        setCookie(response.data);
         return({
             "status": "success", 
             "auth": true, 

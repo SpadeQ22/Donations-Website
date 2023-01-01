@@ -4,8 +4,11 @@ import FormInput from "../../components/Form/FormInput";
 import Nav from "../../components/Home_page/navbar/nav"
 import * as Auth from '../../middleware/auth.service'
 import { useNavigate } from "react-router-dom";
+import { useCookies } from 'react-cookie';
 
 const Register = () => {
+  const [cookies, setCookie] = useCookies(['user']);
+
   const navigate = useNavigate();
   const [values, setValues] = useState({
     firstName:"",
@@ -17,20 +20,21 @@ const Register = () => {
   });
 
   const inputs = [
-    {
-      id: 7,
-      name: "lastName",
-      type: "text",
-      placeholder: "Last Name",
-      label: "Last Name",
-      required: true,
-    },
+    
     {
       id: 6,
       name: "firstName",
       type: "text",
       placeholder: "First Name",
       label: "First Name",
+      required: true,
+    },
+    {
+      id: 7,
+      name: "lastName",
+      type: "text",
+      placeholder: "Last Name",
+      label: "Last Name",
       required: true,
     },
     {
@@ -79,7 +83,7 @@ const Register = () => {
   const handleSubmit = async(e) => {
     e.preventDefault();
     delete values.confirmPassword;
-    const response = await Auth.registerAuthUser(values);
+    const response = await Auth.registerAuthUser(values, setCookie);
     if(response.auth){
       navigate("/");
     } else {

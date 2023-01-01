@@ -12,6 +12,21 @@
     margin: auto;
 }
 
+.inputField:invalid[focused="true"]{
+    border: 1px solid red;
+}
+
+.inputField:invalid[focused="true"] ~ .errorMsg{
+    display: block;
+}
+.errorMsg{
+    font-size: 12px;
+    padding: 3px;
+    color: red;
+    display: none;
+}
+
+
 .payment-logos{
     margin: 1% auto;
     /* background-color: black; */

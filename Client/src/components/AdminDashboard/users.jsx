@@ -1,24 +1,52 @@
 import './users.css';
 import Nav from '../Home_page/navbar/nav';
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useCookies } from 'react-cookie';
+import * as userController from '../../middleware/user.service';
 
 function Users() {
 
-    var box =
-    [['First Name','first_name'], ['Last Name','last_name'], ['Email','email']];
+    const [cookies, setCookie] = useCookies(['user']);
+    const [users, setUsers] = useState([]);
+    const [user, setUser] = useState({
+        'firstName':'',
+        'lastName':'',
+        'email':'',
+        'userName':'',
+        '_id': '',
+        'password':'',
+    });
 
-    var data=['1', 'Omar', 'Ashraf', 'msh', 'ragel', ':)']   
-    function set_data(i)
-    {
-        data=body[i]
+    useEffect(()=>{
+        userController.getAllUsers(cookies.user.token).then(response =>{
+            setUsers(response.data);
+        })
+    }, [cookies]);
+
+    const onChange = (e)=>{
+        setUser({
+            ...user,
+            [e.target.name]: e.target.value,
+        })
     }
 
-    var body =
-        [['1', 'Omar', 'Ashraf', 'msh', 'ragel', ':)'],
-        ['2', 'Aakash', 'Hisar', 'Btech', 'MCA', 'MCA'],
-        ['3', 'Mani', 'Ranchi', 'MSc', 'MCA', 'MCA'],
-        ['4', 'Yash', 'Udaipur', 'Mtech', 'MCA', 'MCA']];
+    const onSave = (e) =>{
+        userController.editUserData(user, user._id, cookies.user.token).then(response => {
+            if(response.status === "success"){
+                window.alert("Saved Successfully!!");
+            } else {
+                window.alert('Error Happened During Save:\n' + response.errMsg)
+            }
+        })
+    }
 
+    let box =
+    [['First Name','firstName', user.firstName], ['Last Name','lastName', user.lastName], ['Email','email', user.email], ['Username', 'userName', user.userName]];
+    
+    function set_data(index)
+    {
+        setUser(users[index]);
+    }
     return (
         <div>
              <Nav />
@@ -29,17 +57,17 @@ function Users() {
                         <th scope="col">First Name</th>
                         <th scope="col">Last Name</th>
                         <th scope="col">Email</th>
-                        <th scope="col">Password</th>
+                        <th scope="col">Username</th>
                         <th scope="col">Edit</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {body.map((row,index) => <tr><th scope="row">{row[0]}</th>
-                        <td>{row[1]}</td>
-                        <td>{row[2]}</td>
-                        <td>{row[3]}</td>
-                        <td>{row[4]}</td>
-                        <td><a id={`edit_${row[0]}`} class='edit' data-target="#modal" data-toggle="modal"  onClick={set_data(index)}>Edit</a></td>
+                    {users.map((row,index) => <tr><th scope="row">{index}</th>
+                        <td>{row.firstName}</td>
+                        <td>{row.lastName}</td>
+                        <td>{row.email}</td>
+                        <td>{row.userName}</td>
+                        <td><a id={`edit_${index}`} class='edit' data-target="#modal" data-toggle="modal"  onClick={()=>set_data(index)}>Edit</a></td>
                     </tr>)}
 
                 </tbody>
@@ -60,14 +88,14 @@ function Users() {
                         {box.map((ele,i) =>  
                                 <div id={`form-${ele[1]}`} class="form-group">
                                     <label class="col-form-label">{ele[0]}</label>
-                                    <input type="text" class="form-control" id={`input_${ele[1]}`}/>
+                                    <input type="text" name={ele[1]} class="form-control" onChange={onChange} id={`input_${ele[1]}`} value={ele[2]}/>
                                 </div>)}
                         </form>
                             
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Save</button>
+                            <button type="button" class="btn btn-primary" data-dismiss="modal" onClick={onSave}>Save</button>
                         </div>
                     </div>
                 </div>
